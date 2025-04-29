@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lost and Found Portal - MLRIT</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>MLRIT Lost and Found Portal</h1>
+    <nav>
+      <a href="#" onclick="showSection('lost')">Report Lost</a>
+      <a href="#" onclick="showSection('found')">Report Found</a>
+      <a href="#" onclick="showSection('history')">View History</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="lost" class="section hidden">
+      <h2>Report Lost Item</h2>
+      <form>
+        <input type="text" placeholder="Item Name" required />
+        <input type="text" placeholder="Location Last Seen" required />
+        <input type="date" required />
+        <textarea placeholder="Description" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section id="found" class="section hidden">
+      <h2>Report Found Item</h2>
+      <form>
+        <input type="text" placeholder="Item Name" required />
+        <input type="text" placeholder="Location Found" required />
+        <input type="date" required />
+        <textarea placeholder="Description" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section id="history" class="section hidden">
+      <h2>Reported Items</h2>
+      <p>(In real project, this will show records from database)</p>
+      <ul>
+        <li>No items to display yet.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 MLRIT College Lost and Found Portal</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
