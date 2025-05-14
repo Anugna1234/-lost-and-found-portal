@@ -163,6 +163,34 @@ window.onload = function () {
 
 </script>
 
+<script>
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    // Get form data
+    const name = document.querySelector('input[name="name"]').value;
+    const item = document.querySelector('input[name="item"]').value;
+    const description = document.querySelector('input[name="description"]').value;
+    const status = document.querySelector('select[name="status"]').value;
+
+    // Create object
+    const entry = { name, item, description, status };
+
+    // Get existing entries
+    const existing = JSON.parse(localStorage.getItem("lostFoundItems")) || [];
+
+    // Add new entry
+    existing.push(entry);
+
+    // Save back to localStorage
+    localStorage.setItem("lostFoundItems", JSON.stringify(existing));
+
+    alert("Data saved successfully!");
+    form.reset(); // Clear the form
+  });
+</script>
 
 </body>
 </html>
