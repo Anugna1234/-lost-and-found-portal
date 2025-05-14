@@ -85,5 +85,30 @@
   </tr>
   <!-- Items will be added here -->
 </table>
+  <script>
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Stop page refresh
+
+    // Get form data
+    const name = document.getElementById("name").value;
+    const item = document.getElementById("item").value;
+    const description = document.getElementById("description").value;
+    const status = document.getElementById("status").value;
+
+    // Create new table row
+    const table = document.querySelector("table");
+    const row = table.insertRow(-1); // Add at the end
+    row.innerHTML = `
+      <td>${name}</td>
+      <td>${item}</td>
+      <td>${description}</td>
+      <td>${status}</td>
+    `;
+
+    // Clear form
+    document.querySelector("form").reset();
+  });
+</script>
+
 </body>
 </html>
