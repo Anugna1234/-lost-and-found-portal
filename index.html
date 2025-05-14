@@ -86,18 +86,41 @@
   <!-- Items will be added here -->
 </table>
   <script>
-  document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Stop page refresh
+  // Load existing data from localStorage on page load
+  window.onload = function() {
+    const existing = JSON.parse(localStorage.getItem("reports")) || [];
+    const table = document.querySelector("table");
 
-    // Get form data
+    existing.forEach((entry) => {
+      const row = table.insertRow(-1);
+      row.innerHTML = `
+        <td>${entry.name}</td>
+        <td>${entry.item}</td>
+        <td>${entry.description}</td>
+        <td>${entry.status}</td>
+      `;
+    });
+  };
+
+  // Handle form submission
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
     const name = document.getElementById("name").value;
     const item = document.getElementById("item").value;
     const description = document.getElementById("description").value;
     const status = document.getElementById("status").value;
 
-    // Create new table row
+    const entry = { name, item, description, status };
+
+    // Save to localStorage
+    const existing = JSON.parse(localStorage.getItem("reports")) || [];
+    existing.push(entry);
+    localStorage.setItem("reports", JSON.stringify(existing));
+
+    // Show in table
     const table = document.querySelector("table");
-    const row = table.insertRow(-1); // Add at the end
+    const row = table.insertRow(-1);
     row.innerHTML = `
       <td>${name}</td>
       <td>${item}</td>
@@ -105,10 +128,10 @@
       <td>${status}</td>
     `;
 
-    // Clear form
     document.querySelector("form").reset();
   });
 </script>
+
 
 </body>
 </html>
